@@ -2,40 +2,40 @@
 
 # expo-three
 
-Tools for using three.js to build native 3D experiences 💙
+Инструмент для использования three.js в построении нативного 3D experiences 💙
 
 [ARKit Example](https://snack.expo.io/@bacon/arkit-example)
 
-### Installation
+### Установка
 
 ```bash
 yarn add three expo-three
 ```
 
-### Usage
+### Использование
 
-Import the library into your JavaScript file:
+Импортируйте библиотеку в ваш JavaScript файл:
 
 ```js
 import ExpoTHREE, { THREE } from 'expo-three';
 ```
 
-## Functions
+## Функции
 
 ### `ExpoTHREE.renderer({ gl: WebGLRenderingContext, ...extras })`
 
 Given a `gl` from an
-[`Expo.GLView`](https://docs.expo.io/versions/latest/sdk/gl-view.html), return a
+[`Expo.GLView`](https://docs.expo.io/versions/latest/sdk/gl-view.html), возвращает
 [`THREE.WebGLRenderer`](https://threejs.org/docs/#api/renderers/WebGLRenderer)
-that draws into it.
+которое в нем отрисовано.
 
-#### Returns
+#### Возвраты
 
-| Property |                                      Type                                      | Description                                              |
+| Свойства |                                      Тип                                      | Описание                                              |
 | -------- | :----------------------------------------------------------------------------: | -------------------------------------------------------- |
-| renderer | [`THREE.WebGLRenderer`](https://threejs.org/docs/#api/renderers/WebGLRenderer) | The Three.js renderer used for drawing to the GL Context |
+| renderer | [`THREE.WebGLRenderer`](https://threejs.org/docs/#api/renderers/WebGLRenderer) | Three.js рендер используемый при трисовке в GL Context |
 
-#### Example
+#### Пример
 
 ```js
 const renderer = ExpoTHREE.renderer({
@@ -47,14 +47,14 @@ const renderer = ExpoTHREE.renderer({
 
 ### `ExpoTHREE.loadAsync()`
 
-A function that will asynchronously load files based on their extension.
+Функция, которая будет асинхронно загружать файлы на основе их расширения.
 
 #### Props
 
 **Image Format**
 
-* `number`: Static file reference `require('./model.*')`
-* `Array<number>`: Collection of static file references
+* `number`: Статическая ссылка на файл `require('./model.*')`
+* `Array<number>`: Коллекция статических ссылок на файлы
   `[require('./model.*')]`
 * `string`: The Expo.Asset
   [`localUri`](https://docs.expo.io/versions/latest/sdk/asset.html#localuri)
@@ -70,19 +70,19 @@ type ImageFormat = {
 export type WildCard = Expo.Asset | number | string | ImageFormat;
 ```
 
-| Property      |           Type            | Description                                                      |
+| Свойство      |           Тип             | Описание                                                         |
 | ------------- | :-----------------------: | ---------------------------------------------------------------- |
-| resource      |         WildCard          | The asset that will be parsed asynchornously                     |
-| onProgress    |       (xhr) => void       | A function that is called with an xhr event                      |
-| assetProvider | () => Promise<Expo.Asset> | A function that is called whenever an unknown asset is requested |
+| resource      |         WildCard          | Актив, который будет анализироваться асинхронно                  |
+| onProgress    |       (xhr) => void       | Функция, вызываемая с событием xhr                               |
+| assetProvider | () => Promise<Expo.Asset> | Функция, которая вызывается всякий раз, когда запрашивается неизвестный объект |
 
 #### Returns
 
-This returns many different things, based on the input file 😅
+Это возвращает много разных вещей, основанных на входном файле 😅
 
 #### Example
 
-A list of supported formats can be found [here](/examples/loader)
+Список поддерживаемых форматов [здесь](/examples/loader)
 
 ```js
 const texture = await ExpoTHREE.loadAsync('https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png');
